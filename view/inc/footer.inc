@@ -46,7 +46,43 @@
 <script src="view/resources/dist/js/adminlte.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="view/resources/dist/js/pages/dashboard.js"></script>
+<!-- ChartJS -->
+<script src="view/resources/plugins/chart.js/Chart.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="view/resources/dist/js/demo.js"></script>
+
+<script>
+    $(function () {
+        //-------------
+        //- DONUT CHART -
+        //-------------
+        // Get context with jQuery - using jQuery's .get() method.
+        var donutChartCanvas = $('#donutChart').get(0).getContext('2d')
+        var donutData        = {
+            labels: [
+                <?= $candidat_data ?>
+            ],
+            datasets: [
+                {
+                    data: [700,500,400,600,],
+                    backgroundColor : ['#f56954', '#00a65a', '#f39c12', '#00c0ef',],
+                }
+            ]
+        }
+        var donutOptions     = {
+            maintainAspectRatio : false,
+            responsive : true,
+        }
+        //Create pie or douhnut chart
+        // You can switch between pie and douhnut using the method below.
+        var donutChart = new Chart(donutChartCanvas, {
+            type: 'doughnut',
+            data: donutData,
+            options: donutOptions
+        })
+    })
+</script>
+
+
 </body>
 </html>
