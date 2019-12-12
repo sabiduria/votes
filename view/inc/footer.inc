@@ -64,7 +64,7 @@
             ],
             datasets: [
                 {
-                    data: [700,500,400,600,],
+                    data: [<?= $candidat_votes?>],
                     backgroundColor : ['#f56954', '#00a65a', '#f39c12', '#00c0ef',],
                 }
             ]

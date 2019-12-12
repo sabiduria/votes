@@ -69,5 +69,16 @@ Class Votes {
 		return true;
 	}
 
+    public static  function countData($candidats_id){
+        $connexion = Connexion::getConnexion();
+        $query = "SELECT COUNT(*) as nber FROM votes WHERE candidats_id=:cd_id";
+        $transaction = $connexion->prepare($query);
+        $transaction->execute(array('cd_id'=>$candidats_id));
+
+        if($data = $transaction->fetch()){
+            return $data['nber'];
+        }
+    }
+
 
 }

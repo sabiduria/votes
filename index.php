@@ -2,11 +2,14 @@
 <?php include_once ('model/autoload.php')?>
 <?php include_once ('view/inc/header.inc'); ?>
 <?php
-    $candidat_data='';
+    $candidat_data = '';
+    $candidat_votes = '';
     $candidats = json_decode(Candidats::select(), true);
 
     foreach ($candidats as $key=>$value){
         $candidat_data .= '\''.$value['nom'].'\',';
+        $votes = Votes::countData($value['id']);
+        $candidat_votes .= '\''.$votes.'\',';
     }
 
 ?>
